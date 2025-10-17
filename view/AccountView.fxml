@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20.0"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      prefWidth="420" prefHeight="480"
+      style="-fx-background-color: linear-gradient(to bottom, #667eea 0%, #764ba2 100%);">
+
+   
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="🏦" style="-fx-font-size: 40px;"/>
+        <Label text="Banking System"
+               style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        <Label text="Account Management"
+               style="-fx-font-size: 14px; -fx-text-fill: #e0e0e0;"/>
+    </VBox>
+
+   
+    <VBox alignment="CENTER" spacing="18"
+          prefWidth="360"
+          style="-fx-background-color: white;
+                 -fx-background-radius: 10;
+                 -fx-padding: 30;
+                 -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);">
+
+        <!-- Card Header -->
+        <Label text="Manage Your Account"
+               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+        <!-- Account Number Field -->
+        <VBox spacing="6" prefWidth="280">
+            <Label text="Account Number" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+            <TextField fx:id="accountNumberField"
+                       promptText="Enter account number"
+                       style="-fx-background-radius: 5;
+                              -fx-border-color: #ddd;
+                              -fx-border-radius: 5;"/>
+        </VBox>
+
+        <!-- Amount Field -->
+        <VBox spacing="6" prefWidth="280">
+            <Label text="Amount" style="-fx-font-weight: bold; -fx-text-fill: #555;"/>
+            <TextField fx:id="amountField"
+                       promptText="Enter amount"
+                       style="-fx-background-radius: 5;
+                              -fx-border-color: #ddd;
+                              -fx-border-radius: 5;"/>
+        </VBox>
+
+        <!-- Buttons Section -->
+        <HBox alignment="CENTER" spacing="15">
+            <Button fx:id="depositButton" text="Deposit"
+                    style="-fx-background-color: #4CAF50;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 5;
+                           -fx-pref-width: 120;
+                           -fx-pref-height: 35;"/>
+
+            <Button fx:id="withdrawButton" text="Withdraw"
+                    style="-fx-background-color: #e53935;
+                           -fx-text-fill: white;
+                           -fx-font-weight: bold;
+                           -fx-background-radius: 5;
+                           -fx-pref-width: 120;
+                           -fx-pref-height: 35;"/>
+        </HBox>
+
+        <!-- Balance Display Label -->
+        <Label fx:id="balanceLabel" text="Balance: $0.00"
+               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+        <!-- Message Feedback Label -->
+        <Label fx:id="messageLabel" text=""
+               style="-fx-text-fill: #666; -fx-font-size: 12px;"/>
+
+    </VBox>
+
+   
+    <VBox alignment="CENTER" spacing="5">
+        <Hyperlink text="Logout"
+                   fx:id="logoutLink"
+                   style="-fx-text-fill: #e0e0e0;
+                          -fx-border-color: transparent;
+                          -fx-font-weight: bold;"/>
+        <Label text="Thank you for using our system"
+               style="-fx-text-fill: white;"/>
+    </VBox>
+
+</VBox>
