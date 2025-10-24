@@ -1,5 +1,5 @@
 package model.interfaces;
 
-public interface InterestBearing {
+public interface InterestEarning {
     double calculateInterest();
 }

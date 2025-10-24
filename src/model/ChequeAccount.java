@@ -14,9 +14,11 @@ public class ChequeAccount extends Account implements Withdrawable {
 
     @Override
     public void withdraw(double amount) {
-        if (amount >= balance)
-            balance -= amount;
-        else System.out.println("Insufficient Funds!");
+        if (amount > balance) {
+            throw new IllegalArgumentException("Insufficient Funds! Current balance: P" + balance);
+        }
+
+        balance -= amount;
     }
 
     @Override

@@ -33,7 +33,7 @@ public abstract class Customer {
         accounts.add(account);
     }
 
-    public Account getAccount(String accountNumber) {
+    public Account getAccounts(String accountNumber) {
         for (Account account: accounts) {
             if (account.getAccountNumber().equals(accountNumber)) {
                 return account;
@@ -42,8 +42,12 @@ public abstract class Customer {
         return null;
     }
 
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
     public void deposit(String accountNumber, double amount) {
-        Account account = getAccount(accountNumber);
+        Account account = getAccounts(accountNumber);
         if (account != null) {
             account.deposit(amount);
             System.out.println("Deposit successful. New Balance: P" + account.getBalance());
@@ -53,7 +57,7 @@ public abstract class Customer {
     }
 
     public void withdraw (String accountNumber, double amount) {
-        Account account = getAccount(accountNumber);
+        Account account = getAccounts(accountNumber);
         if (account != null) {
             if (account instanceof model.interfaces.Withdrawable) {
                 ((model.interfaces.Withdrawable) account).withdraw(amount);

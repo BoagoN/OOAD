@@ -1,9 +1,9 @@
 package model;
 
 import model.interfaces.Withdrawable;
-import model.interfaces.InterestBearing;
+import model.interfaces.InterestEarning;
 
-public class InvestmentAccount extends Account implements Withdrawable, InterestBearing {
+public class InvestmentAccount extends Account implements Withdrawable, InterestEarning {
     private final double INTEREST_RATE = 0.05;
     private final double MIN_OPENING_DEPOSIT = 500.00;
 
@@ -22,9 +22,10 @@ public class InvestmentAccount extends Account implements Withdrawable, Interest
 
     @Override
     public void withdraw(double amount) {
-        if (amount >= balance)
-            balance -= amount;
-        else System.out.println("Insufficient funds!");
+        if (amount > balance) {
+            throw new IllegalArgumentException("Insufficient Funds! Current balance: P" + balance);
+        }
+        balance -= amount;
     }
 
     @Override

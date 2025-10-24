@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="550" prefWidth="900" spacing="20" style="-fx-background-color: linear-gradient(to bottom, #667eea 0%, #764ba2 100%); -fx-padding: 30;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AccountController">
+
+    <!--DASHBOARD SECTION-->
+    <VBox fx:id="dashboardPane" alignment="TOP_CENTER" spacing="20" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20;">
+
+        <Label fx:id="welcomeLabel" style="-fx-font-size: 20; -fx-font-weight: bold;" text="Welcome!" />
+
+        <!--Open Account Section-->
+        <VBox spacing="10" style="-fx-background-color: #f7f7f7; -fx-padding: 15; -fx-background-radius: 10;">
+            <Label style="-fx-font-weight: bold; -fx-font-size: 16;" text="Open New Account" />
+            <HBox alignment="CENTER" spacing="10">
+                <ComboBox fx:id="accountTypeCombo" prefWidth="200" promptText="Select Account Type" />
+                <TextField fx:id="branchField" prefWidth="200" promptText="Branch" />
+                <TextField fx:id="initialDepositField" prefWidth="150" promptText="Initial Deposit" />
+                <Button fx:id="openAccountButton" onAction="#handleOpenAccount" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Open Account" />
+            </HBox>
+
+            <HBox fx:id="employerFields" alignment="CENTER" spacing="10" visible="false" managed="false">
+                <TextField fx:id="employerNameField" prefWidth="200" promptText="Employer Name"/>
+                <TextField fx:id="employerAddressField" prefWidth="200" promptText="Employer Address"/>
+            </HBox>
+
+            <Label fx:id="accountMessageLabel" style="-fx-text-fill: #333;" text="" />
+        </VBox>
+
+        <!--Account Table-->
+        <TableView fx:id="accountTable" prefHeight="250" prefWidth="700">
+            <columns>
+                <TableColumn fx:id="colAccountNumber" prefWidth="150" text="Account Number" />
+                <TableColumn fx:id="colType" prefWidth="150" text="Type" />
+                <TableColumn fx:id="colBalance" prefWidth="150" text="Balance" />
+                <TableColumn fx:id="colBranch" prefWidth="150" text="Branch" />
+            </columns>
+        </TableView>
+
+        <!--Actions-->
+        <HBox alignment="CENTER" spacing="15">
+            <Button fx:id="depositButton" onAction="#handleDeposit" style="-fx-background-color: #2196f3; -fx-text-fill: white;" text="Deposit" />
+            <Button fx:id="withdrawButton" onAction="#handleWithdraw" style="-fx-background-color: #2196f3; -fx-text-fill: white;" text="Withdraw" />
+            <Button fx:id="viewTransactionsButton" onAction="#handleViewTransactions" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="View Transactions" />
+            <Button fx:id="logoutButton" onAction="#handleLogout" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Logout" />
+        </HBox>
+
+        <Label fx:id="statusLabel" style="-fx-text-fill: #333;" text="" />
+    </VBox>
+
+</VBox>

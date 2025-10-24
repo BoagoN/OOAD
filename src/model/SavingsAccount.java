@@ -1,8 +1,8 @@
 package model;
 
-import model.interfaces.InterestBearing;
+import model.interfaces.InterestEarning;
 
-public class SavingsAccount extends Account implements InterestBearing {
+public class SavingsAccount extends Account implements InterestEarning {
     private final double INTEREST_RATE = 0.0005;
 
     public SavingsAccount(String accountNumber, String branch, Customer customer) {
