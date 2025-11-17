@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="700" prefWidth="1000" spacing="20" style="-fx-background-color: linear-gradient(to bottom, #667eea 0%, #764ba2 100%); -fx-padding: 20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
+
+    <!-- Header -->
+    <HBox alignment="CENTER" spacing="20">
+        <Label style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: white;" text="🏦 Bank Admin Dashboard" />
+    </HBox>
+
+    <!-- Statistics Panel -->
+    <HBox alignment="CENTER" spacing="30">
+        <VBox alignment="CENTER" spacing="5" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10;">
+            <Label style="-fx-font-weight: bold;" text="Total Customers" />
+            <Label fx:id="totalCustomersLabel" style="-fx-font-size: 24; -fx-text-fill: #2c3e50;" text="0" />
+        </VBox>
+
+        <VBox alignment="CENTER" spacing="5" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10;">
+            <Label style="-fx-font-weight: bold;" text="Total Accounts" />
+            <Label fx:id="totalAccountsLabel" style="-fx-font-size: 24; -fx-text-fill: #2c3e50;" text="0" />
+        </VBox>
+    </HBox>
+
+    <!-- Main Content -->
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+        <!-- Customers Panel -->
+        <VBox prefWidth="500" spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10;">
+            <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Customers" />
+            <TableView fx:id="customerTable" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colCustomerId" prefWidth="80" text="ID" />
+                    <TableColumn fx:id="colCustomerType" prefWidth="100" text="Type" />
+                    <TableColumn fx:id="colName" prefWidth="150" text="Name/Company" />
+                    <TableColumn fx:id="colEmail" prefWidth="120" text="Email" />
+                    <TableColumn fx:id="colAccountCount" prefWidth="80" text="Accounts" />
+                </columns>
+            </TableView>
+            <HBox spacing="10">
+                <Button onAction="#refreshData" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Refresh Data" />
+                <Button onAction="#handleViewCustomerDetails" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="View Details" />
+            </HBox>
+        </VBox>
+
+        <!-- Accounts Panel -->
+        <VBox prefWidth="450" spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 10;">
+            <Label style="-fx-font-size: 18; -fx-font-weight: bold;" text="Customer Accounts" />
+            <TableView fx:id="accountTable" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colAccNumber" prefWidth="100" text="Account No" />
+                    <TableColumn fx:id="colAccType" prefWidth="100" text="Type" />
+                    <TableColumn fx:id="colBalance" prefWidth="100" text="Balance" />
+                    <TableColumn fx:id="colBranch" prefWidth="120" text="Branch" />
+                </columns>
+            </TableView>
+            <HBox spacing="10">
+                <Button onAction="#handlePayInterest" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Pay Monthly Interest" />
+                <Button onAction="#handleLogout" style="-fx-background-color: #95a5a6; -fx-text-fill: white;" text="Logout" />
+            </HBox>
+        </VBox>
+    </HBox>
+
+    <!-- Status Bar -->
+    <Label fx:id="statusLabel" style="-fx-text-fill: white; -fx-font-weight: bold;" text="Ready" />
+
+</VBox>

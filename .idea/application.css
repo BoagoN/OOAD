@@ -1,0 +1,259 @@
+/* ===== JavaFX CSS Variables ===== */
+.root {
+    /* Colors - Converted from your CSS variables */
+    -fx-primary: #60519b;
+    -fx-primary-dark: #4a3d7a;
+    -fx-primary-light: #8a7cc3;
+    -fx-secondary: #1e202e;
+    -fx-secondary-light: #2c2f40;
+    -fx-accent: #f28c28;
+    -fx-light: #ffffff;
+    -fx-light-gray: #f5f5f7;
+    -fx-medium-gray: #bfc0d1;
+    -fx-dark-gray: #333333;
+
+    /* Spacing */
+    -fx-space-xs: 8px;
+    -fx-space-sm: 16px;
+    -fx-space-md: 24px;
+    -fx-space-lg: 32px;
+    -fx-space-xl: 48px;
+
+    /* Border radius */
+    -fx-radius-sm: 4px;
+    -fx-radius-md: 8px;
+    -fx-radius-lg: 12px;
+    -fx-radius-xl: 16px;
+}
+
+/* ===== Base Styles ===== */
+.root {
+    -fx-font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+    -fx-background-color: -fx-secondary;
+}
+
+/* ===== Login View Styling ===== */
+.login-container {
+    -fx-background-color: linear-gradient(to bottom, -fx-primary 0%, -fx-primary-dark 100%);
+}
+
+.login-card {
+    -fx-background-color: -fx-light;
+    -fx-background-radius: -fx-radius-lg;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 0);
+    -fx-padding: -fx-space-xl;
+}
+
+.login-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-secondary;
+    -fx-font-family: "Poppins", "Segoe UI";
+}
+
+.login-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-medium-gray;
+}
+
+.form-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-secondary;
+    -fx-font-size: 14px;
+}
+
+.form-field {
+    -fx-background-color: -fx-light;
+    -fx-background-radius: -fx-radius-sm;
+    -fx-border-color: -fx-medium-gray;
+    -fx-border-radius: -fx-radius-sm;
+    -fx-padding: -fx-space-sm;
+    -fx-font-size: 14px;
+}
+
+.form-field:focused {
+    -fx-border-color: -fx-primary;
+    -fx-effect: dropshadow(three-pass-box, rgba(96, 81, 155, 0.2), 0, 0, 0, 2px);
+}
+
+.btn-primary {
+    -fx-background-color: -fx-secondary;
+    -fx-text-fill: -fx-light;
+    -fx-background-radius: -fx-radius-sm;
+    -fx-font-weight: 500;
+    -fx-padding: -fx-space-sm -fx-space-md;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: -fx-secondary-light;
+}
+
+.btn-secondary {
+    -fx-background-color: -fx-primary;
+    -fx-text-fill: -fx-light-gray;
+    -fx-background-radius: -fx-radius-sm;
+    -fx-font-weight: 500;
+    -fx-padding: -fx-space-sm -fx-space-md;
+}
+
+/* ===== Account View Styling ===== */
+.app-header {
+    -fx-background-color: -fx-primary;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-padding: 15px 20px;
+}
+
+.header-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-light;
+    -fx-font-family: "Poppins", "Segoe UI";
+}
+
+.header-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: -fx-medium-gray;
+}
+
+.user-welcome {
+    -fx-text-fill: -fx-light;
+    -fx-font-weight: bold;
+}
+
+.card {
+    -fx-background-color: -fx-light;
+    -fx-background-radius: -fx-radius-md;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 0);
+    -fx-padding: -fx-space-lg;
+}
+
+.card-dark {
+    -fx-background-color: -fx-secondary-light;
+    -fx-background-radius: -fx-radius-md;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 0);
+}
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-secondary;
+    -fx-font-family: "Poppins", "Segoe UI";
+}
+
+.account-item {
+    -fx-padding: 10px 0px;
+}
+
+.account-name {
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-secondary;
+}
+
+.account-balance {
+    -fx-font-weight: bold;
+    -fx-text-fill: #2E7D32; /* Green for money */
+}
+
+.total-balance {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1565C0; /* Blue for total */
+}
+
+.combo-box {
+    -fx-background-color: -fx-light;
+    -fx-background-radius: -fx-radius-sm;
+    -fx-border-color: -fx-medium-gray;
+    -fx-border-radius: -fx-radius-sm;
+    -fx-padding: 8px;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: -fx-light;
+    -fx-text-fill: -fx-secondary;
+}
+
+.btn-deposit {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-text-fill: -fx-light;
+    -fx-background-radius: -fx-radius-sm;
+    -fx-font-weight: bold;
+    -fx-padding: -fx-space-sm;
+    -fx-cursor: hand;
+}
+
+.btn-deposit:hover {
+    -fx-background-color: #45a049;
+}
+
+.btn-withdraw {
+    -fx-background-color: #f44336; /* Red */
+    -fx-text-fill: -fx-light;
+    -fx-background-radius: -fx-radius-sm;
+    -fx-font-weight: bold;
+    -fx-padding: -fx-space-sm;
+    -fx-cursor: hand;
+}
+
+.btn-withdraw:hover {
+    -fx-background-color: #da190b;
+}
+
+.transaction-item {
+    -fx-padding: 8px 0px;
+}
+
+.transaction-type {
+    -fx-font-weight: bold;
+}
+
+.transaction-deposit {
+    -fx-text-fill: #4CAF50; /* Green */
+}
+
+.transaction-withdrawal {
+    -fx-text-fill: #f44336; /* Red */
+}
+
+.transaction-amount {
+    -fx-font-weight: bold;
+}
+
+.transaction-date {
+    -fx-text-fill: -fx-medium-gray;
+    -fx-font-size: 11px;
+}
+
+.message-label {
+    -fx-text-fill: -fx-medium-gray;
+    -fx-font-size: 12px;
+    -fx-wrap-text: true;
+}
+
+.message-success {
+    -fx-text-fill: #4CAF50;
+}
+
+.message-error {
+    -fx-text-fill: #f44336;
+}
+
+/* ===== Custom Components ===== */
+.separator {
+    -fx-background-color: -fx-medium-gray;
+    -fx-pref-height: 1px;
+}
+
+.logout-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: -fx-medium-gray;
+    -fx-border-radius: -fx-radius-sm;
+    -fx-text-fill: -fx-light;
+    -fx-cursor: hand;
+}
+
+.logout-btn:hover {
+    -fx-background-color: rgba(255,255,255,0.1);
+}
