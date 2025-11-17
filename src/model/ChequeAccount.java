@@ -12,6 +12,14 @@ public class ChequeAccount extends Account implements Withdrawable {
         this.employerAddress = employerAddress;
     }
 
+    public String getEmployerName() {
+        return employerName;
+    }
+
+    public String getEmployerAddress() {
+        return employerAddress;
+    }
+
     @Override
     public void withdraw(double amount) {
         if (amount > balance) {

@@ -1,75 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controller.LoginController"
-      prefWidth="900" prefHeight="550"
-      style="-fx-background-color: linear-gradient(to bottom, #667eea 0%, #764ba2 100%); -fx-padding: 30;" spacing="20">
+<VBox prefHeight="550" prefWidth="900" spacing="20" style="-fx-background-color: linear-gradient(to bottom, #667eea 0%, #764ba2 100%); -fx-padding: 30;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
 
     <!--LOGIN SECTION -->
-    <VBox fx:id="loginPane" alignment="CENTER" spacing="20"
-          style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 10;">
-        <Label text="🏦 Banking System" style="-fx-font-size: 28; -fx-font-weight: bold;"/>
-        <Label text="Secure Login" style="-fx-text-fill: #666;"/>
+    <VBox fx:id="loginPane" alignment="CENTER" prefHeight="464.0" prefWidth="834.0" spacing="20" style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 10;">
+        <Label style="-fx-font-size: 28; -fx-font-weight: bold;" text="🏦 Banking System" />
+        <Label style="-fx-text-fill: #666;" text="Secure Login" />
 
-        <VBox spacing="10" prefWidth="300">
-            <TextField fx:id="emailField" promptText="Email"/>
-            <PasswordField fx:id="pinField" promptText="PIN"/>
+        <VBox prefWidth="300" spacing="10">
+            <TextField fx:id="emailField" promptText="Email" />
+            <PasswordField fx:id="pinField" promptText="PIN" />
         </VBox>
 
         <HBox alignment="CENTER" spacing="10">
-            <Button fx:id="loginButton" text="Login"
-                    style="-fx-background-color: #4CAF50; -fx-text-fill: white;" onAction="#handleLogin"/>
-            <Button fx:id="adminButton" text="Admin"
-                    style="-fx-background-color: #2196F3; -fx-text-fill: white;" onAction="#handleAdminLogin"/>
+            <Button fx:id="loginButton" onAction="#handleLogin" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Login" />
+            <Button fx:id="adminButton" onAction="#handleAdminLogin" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Admin" />
         </HBox>
 
-        <Label fx:id="messageLabel" text=""/>
+        <Label fx:id="messageLabel" text="" />
 
-        <Hyperlink fx:id="switchToRegisterLink" text="New user? Register here" onAction="#showRegistrationPane"/>
+        <Hyperlink fx:id="switchToRegisterLink" onAction="#showRegistrationPane" text="New user? Register here" />
     </VBox>
 
 
     <!--REGISTRATION SECTION-->
-    <VBox fx:id="registerPane" visible="false" managed="false"
-          alignment="CENTER" spacing="20"
-          style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 10;">
+    <VBox fx:id="registerPane" alignment="CENTER" managed="false" spacing="20" style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 10;" visible="false">
 
-        <Label text="📝 Customer Registration" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
+        <Label style="-fx-font-size: 24; -fx-font-weight: bold;" text="📝 Customer Registration" />
 
         <HBox alignment="CENTER" spacing="20">
-            <RadioButton fx:id="individualRadio" text="Individual"/>
-            <RadioButton fx:id="corporateRadio" text="Corporate"/>
+            <RadioButton fx:id="individualRadio" text="Individual" />
+            <RadioButton fx:id="corporateRadio" text="Corporate" />
         </HBox>
 
-        <VBox spacing="10" prefWidth="350">
-            <TextField fx:id="regEmailField" promptText="Email"/>
-            <PasswordField fx:id="regPinField" promptText="PIN"/>
+        <VBox prefWidth="350" spacing="10">
+            <TextField fx:id="regEmailField" promptText="Email" />
+            <PasswordField fx:id="regPinField" promptText="PIN" />
 
             <!-- INDIVIDUAL FIELDS -->
-            <VBox fx:id="individualFields" spacing="8" visible="false" managed="false">
-                <TextField fx:id="firstNameField" promptText="First Name"/>
-                <TextField fx:id="lastNameField" promptText="Last Name"/>
-                <TextField fx:id="cellField" promptText="Cellphone Number"/>
+            <VBox fx:id="individualFields" managed="false" spacing="8" visible="false">
+                <TextField fx:id="firstNameField" promptText="First Name" />
+                <TextField fx:id="lastNameField" promptText="Last Name" />
+                <TextField fx:id="cellField" promptText="Cellphone Number" />
             </VBox>
 
             <!-- CORPORATE FIELDS -->
-            <VBox fx:id="corporateFields" spacing="8" visible="false" managed="false">
-                <TextField fx:id="companyNameField" promptText="Company Name"/>
-                <TextField fx:id="regNumField" promptText="Registration Number"/>
-                <TextField fx:id="telField" promptText="Telephone"/>
-                <TextField fx:id="addressField" promptText="Address"/>
+            <VBox fx:id="corporateFields" managed="false" spacing="8" visible="false">
+                <TextField fx:id="companyNameField" promptText="Company Name" />
+                <TextField fx:id="regNumField" promptText="Registration Number" />
+                <TextField fx:id="telField" promptText="Telephone" />
+                <TextField fx:id="addressField" promptText="Address" />
             </VBox>
         </VBox>
 
-        <Button fx:id="registerButton" text="Register"
-                style="-fx-background-color: #4CAF50; -fx-text-fill: white;" onAction="#handleRegistration"/>
+        <Button fx:id="registerButton" onAction="#handleRegistration" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Register" />
 
-        <Hyperlink text="Already have an account? Login here" onAction="#showLoginPane"/>
-        <Label fx:id="registerMessageLabel" text=""/>
+        <Hyperlink onAction="#showLoginPane" text="Already have an account? Login here" />
+        <Label fx:id="registerMessageLabel" text="" />
     </VBox>
 
 </VBox>

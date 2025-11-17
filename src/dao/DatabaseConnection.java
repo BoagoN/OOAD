@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    // Updated for MySQL Connector/J 9.5.0
     private static final String URL = "jdbc:mysql://localhost:3306/banking system?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
     private static final String USER = "root";
     private static final String PASSWORD = "root";
@@ -14,7 +13,7 @@ public class DatabaseConnection {
 
     static {
         try {
-            // For MySQL Connector/J 9.x, the driver class is different
+
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("✅ MySQL JDBC Driver loaded successfully");
         } catch (ClassNotFoundException e) {
@@ -34,7 +33,6 @@ public class DatabaseConnection {
                 System.err.println("URL: " + URL);
                 System.err.println("User: " + USER);
 
-                // More detailed troubleshooting
                 if (e.getMessage().contains("Unknown database")) {
                     System.err.println("💡 The database 'banking_system' doesn't exist or has a different name");
                 }
@@ -55,7 +53,7 @@ public class DatabaseConnection {
         }
     }
 
-    // Test connection
+
     public static void testConnection() {
         try {
             Connection conn = getConnection();
@@ -66,7 +64,7 @@ public class DatabaseConnection {
         }
     }
 
-    // Method to test basic connection without database
+
     public static void testServerConnection() {
         try {
             String testURL = "jdbc:mysql://localhost:3306/?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";

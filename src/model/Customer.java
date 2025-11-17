@@ -25,7 +25,7 @@ public abstract class Customer {
             this.pin = newPin;
             System.out.println("PIN changed successfully.");
         } else {
-            System.out.println("Incorrect PIN, please tyr again.");
+            System.out.println("Incorrect PIN, please try again.");
         }
     }
 
@@ -34,7 +34,7 @@ public abstract class Customer {
     }
 
     public Account getAccounts(String accountNumber) {
-        for (Account account: accounts) {
+        for (Account account : accounts) {
             if (account.getAccountNumber().equals(accountNumber)) {
                 return account;
             }
@@ -56,7 +56,7 @@ public abstract class Customer {
         }
     }
 
-    public void withdraw (String accountNumber, double amount) {
+    public void withdraw(String accountNumber, double amount) {
         Account account = getAccounts(accountNumber);
         if (account != null) {
             if (account instanceof model.interfaces.Withdrawable) {
@@ -78,6 +78,14 @@ public abstract class Customer {
         return email;
     }
 
+    public String getCustomerType() {
+        if (this instanceof IndividualCustomer) {
+            return "Individual";
+        } else {
+            return "Corporate";
+        }
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -87,4 +95,8 @@ public abstract class Customer {
     }
 
     public abstract void displayCustomerDetails();
+
+    public String getPin() {
+        return pin;
+    }
 }

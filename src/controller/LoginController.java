@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import dao.CustomerDAO;
+import java.sql.SQLException;
+
 public class LoginController {
 
     @FXML private VBox loginPane;
@@ -35,7 +38,6 @@ public class LoginController {
     @FXML private Label registerMessageLabel;
 
     private ToggleGroup group;
-    private Map<String, Customer> customerMap = new HashMap<>();
     private Stage stage;
 
     @FXML
@@ -87,22 +89,18 @@ public class LoginController {
             return;
         }
 
-        Customer customer = customerMap.get(email);
-        if (customer != null && customer.validatePin(pin)) {
-            messageLabel.setText("✅ Login successful!");
-            loadAccountView(customer);
-        } else {
-            messageLabel.setText("❌ Invalid credentials.");
+        try {
+            Customer customer = customerDAO.getCustomerByEmail(email);
+            if (customer != null && customer.validatePin(pin)) {
+                messageLabel.setText("Login Successful!");
+                loadAccountView(customer);
+            } else {
+                messageLabel.setText("Invalid Credentials");
+            }
+        } catch (SQLException e) {
+            messageLabel.setText("Database Error: " + e.getMessage());
+            e.printStackTrace();
         }
-    }
-
-    @FXML
-    private void handleAdminLogin(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Admin Login");
-        alert.setHeaderText(null);
-        alert.setContentText("🔐 Admin login feature coming soon.");
-        alert.showAndWait();
     }
 
 
@@ -113,44 +111,43 @@ public class LoginController {
         String pin = regPinField.getText();
 
         if (email.isEmpty() || pin.isEmpty()) {
-            registerMessageLabel.setText("⚠ Email and PIN are required.");
+            registerMessageLabel.setText("Email and PIN are required.");
             return;
         }
 
-        if (customerMap.containsKey(email)) {
-            registerMessageLabel.setText("⚠ Email already registered.");
-            return;
-        }
+        try {
+            if (customerDAO.emailExists(email)) {
+                registerMessageLabel.setText("This email already exists");
+                return;
+            }
 
-        Customer newCustomer;
-        if (individualRadio.isSelected()) {
-            newCustomer = new IndividualCustomer(
-                    "CUST" + (customerMap.size() + 1),
-                    email, pin,
-                    firstNameField.getText(),
-                    lastNameField.getText(),
-                    cellField.getText()
-            );
-        } else if (corporateRadio.isSelected()) {
-            newCustomer = new CorporateCustomer(
-                    "CORP" + (customerMap.size() + 1),
-                    email, pin,
-                    companyNameField.getText(),
-                    regNumField.getText(),
-                    telField.getText(),
-                    addressField.getText()
-            );
-        } else {
-            registerMessageLabel.setText("⚠ Please select Individual or Corporate.");
-            return;
-        }
+            Customer newCustomer;
+            String customerId = "CUST" + System.currentTimeMillis();
 
-        customerMap.put(email, newCustomer);
-        registerMessageLabel.setText("✅ Registration successful! Please log in.");
-        showLoginPane();
+            if (individualRadio.isSelected()) {
+                newCustomer = new IndividualCustomer(customerId,email,pin,firstNameField.getText(),lastNameField.getText(),cellField.getText());
+
+            } else if (corporateRadio.isSelected()) {
+                newCustomer = new CorporateCustomer(customerId,email,pin,companyNameField.getText(),regNumField.getText(),telField.getText(),addressField.getText());
+
+            } else {
+                registerMessageLabel.setText("Please select customer type");
+                return;
+            }
+
+            customerDAO.addCustomer(newCustomer);
+            registerMessageLabel.setText("Registration Successful! You may now Log in");
+            showLoginPane();
+
+        } catch (SQLException e) {
+            registerMessageLabel.setText("Registration Failed: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
-    // SWITCH TO ACCOUNT VIEW
+    private CustomerDAO customerDAO = new CustomerDAO();
+
+
     private void loadAccountView(Customer customer) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AccountView.fxml"));
@@ -167,7 +164,45 @@ public class LoginController {
         }
     }
 
-    public Map<String, Customer> getCustomerMap() {
-        return customerMap;
+    @FXML
+    private void handleAdminLogin(ActionEvent event) {
+        TextInputDialog passwordDialog = new TextInputDialog();
+        passwordDialog.setTitle("Admin Login");
+        passwordDialog.setHeaderText("Enter Admin Password");
+        passwordDialog.setContentText("Password:");
+
+        passwordDialog.showAndWait().ifPresent(password -> {
+            if ("admin123".equals(password)) {
+                loadAdminView();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Admin Login Failed");
+                alert.setHeaderText(null);
+                alert.setContentText("Invalid admin password.");
+                alert.showAndWait();
+            }
+        });
     }
+
+    private void loadAdminView() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AdminView.fxml"));
+            VBox adminRoot = loader.load();
+
+            Scene scene = new Scene(adminRoot);
+            Stage adminStage = new Stage();
+            adminStage.setTitle("Bank Admin Dashboard");
+            adminStage.setScene(scene);
+            adminStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Cannot load admin dashboard");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+    }
+
 }

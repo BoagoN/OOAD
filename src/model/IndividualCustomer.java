@@ -18,6 +18,18 @@ public class IndividualCustomer extends Customer {
         return firstName + " " + lastName;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getCellphoneNumber() {
+        return cellphoneNumber;
+    }
+
     @Override
     public void displayCustomerDetails() {
         System.out.println("Customer(Individual): " + firstName + " " + lastName);

@@ -19,6 +19,7 @@ public class Bank {
         for (Customer customer : allCustomers) {
             customers.put(customer.getEmail(), customer);
 
+
             List<Account> customerAccounts = accountDAO.getAccountsByCustomerId(customer.getCustomerId());
             for (Account account : customerAccounts) {
                 customer.openAccount(account);
@@ -61,6 +62,7 @@ public class Bank {
         return customers.values();
     }
 
+
     public void payMonthlyInterest() throws SQLException {
         List<Account> allAccounts = getAllAccounts();
         int interestPaidCount = 0;
@@ -72,7 +74,9 @@ public class Bank {
 
                 if (interest > 0) {
                     account.deposit(interest);
+
                     accountDAO.updateAccountBalance(account.getAccountNumber(), account.getBalance());
+
                     interestPaidCount++;
                     System.out.println("Paid interest of P" + interest + " to " + account.getAccountNumber());
                 }
@@ -87,5 +91,13 @@ public class Bank {
             allAccounts.addAll(customer.getAccounts());
         }
         return allAccounts;
+    }
+
+    public double getTotalBankBalance() throws SQLException {
+        double total = 0;
+        for (Account account : getAllAccounts()) {
+            total += account.getBalance();
+        }
+        return total;
     }
 }

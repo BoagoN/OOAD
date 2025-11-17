@@ -21,15 +21,14 @@ public class CorporateCustomer extends Customer {
     }
 
     public String getRegistrationNumber() {
-
         return registrationNumber;
     }
-    public String getTelephoneNumber() {
 
+    public String getTelephoneNumber() {
         return telephoneNumber;
     }
-    public String getAddress() {
 
+    public String getAddress() {
         return address;
     }
 

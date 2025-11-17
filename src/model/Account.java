@@ -32,18 +32,20 @@ public abstract class Account {
         return branch;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
     public void deposit(double amount) {
-        if (amount <= 0)
-            throw new IllegalArgumentException("Insufficient amount");
-            balance += amount;
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");
+        }
+        balance += amount;
     }
 
     public double getBalance() {
         return balance;
     }
 
-
     public abstract void displayAccountDetails();
-
-
 }

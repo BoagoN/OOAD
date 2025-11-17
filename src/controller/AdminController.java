@@ -28,6 +28,7 @@ public class AdminController {
 
     @FXML private Label totalCustomersLabel;
     @FXML private Label totalAccountsLabel;
+    @FXML private Label totalBalanceLabel;
     @FXML private Label statusLabel;
 
     private Bank bank = new Bank();
@@ -101,6 +102,7 @@ public class AdminController {
     private void updateStatistics(Collection<Customer> customers) throws SQLException {
         int totalCustomers = customers.size();
         int totalAccounts = 0;
+        double totalBalance = bank.getTotalBankBalance();
 
         for (Customer customer : customers) {
             totalAccounts += customer.getAccounts().size();
@@ -108,6 +110,7 @@ public class AdminController {
 
         totalCustomersLabel.setText(String.valueOf(totalCustomers));
         totalAccountsLabel.setText(String.valueOf(totalAccounts));
+        totalBalanceLabel.setText("P" + String.format("%.2f", totalBalance));
     }
 
     @FXML
