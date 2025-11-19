@@ -20,7 +20,7 @@ public class MainApp extends Application {
             LoginController controller = loader.getController();
             controller.setStage(primaryStage);
 
-            // Apply your styling (from your original layout)
+            //  styling
             Scene scene = new Scene(root, 900, 550);
             primaryStage.setTitle("🏦 Banking System");
             primaryStage.setScene(scene);
