@@ -123,20 +123,20 @@ public class AccountController {
                     return;
             }
 
-            // Save to database first
+          
             accountDAO.addAccount(newAccount);
 
-            // Record initial deposit transaction
+           
             if (initialDeposit > 0 && !"Investment".equals(type)) {
                 Transaction depositTransaction = new Transaction("DEPOSIT", initialDeposit, accNum);
                 transactionDAO.addTransaction(depositTransaction);
             }
 
-            // Add to customer's local list and refresh UI
+           
             loggedInCustomer.openAccount(newAccount);
             refreshAccountTable();
 
-            // Clear form fields
+            
             branchField.clear();
             initialDepositField.clear();
             employerNameField.clear();
