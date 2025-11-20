@@ -92,12 +92,4 @@ public class Bank {
         }
         return allAccounts;
     }
-
-    public double getTotalBankBalance() throws SQLException {
-        double total = 0;
-        for (Account account : getAllAccounts()) {
-            total += account.getBalance();
-        }
-        return total;
-    }
 }

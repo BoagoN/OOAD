@@ -20,14 +20,7 @@ public abstract class Customer {
         return this.pin.equals(enteredPin);
     }
 
-    public void changePin(String currentPin, String newPin) {
-        if (this.pin.equals(currentPin)) {
-            this.pin = newPin;
-            System.out.println("PIN changed successfully.");
-        } else {
-            System.out.println("Incorrect PIN, please try again.");
-        }
-    }
+
 
     public void openAccount(Account account) {
         accounts.add(account);
